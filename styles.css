@@ -3,8 +3,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     min-height: 100vh;
     margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h1, button, p {
