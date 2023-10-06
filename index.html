@@ -1,29 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport" content="
-    width=device-width, initial-scale=1.0">
-
-    <title>
-        Program Cek Saldo
-    </title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Cek Saldo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-    <body>
-
+<body>
+    <div class="content">
         <h1>Program Tambah Kurang Saldo</h1>
-       
-        
         <button onclick="bank_account_obj.tambahSaldo()">Tambah Saldo</button>
         <button onclick="bank_account_obj.kurangiSaldo()">Kurangi Saldo</button>
+        <h3 id="saldoDisplay">Saldo anda saat ini: Rp<span id="tampilanwebsaldo">0</span></h3>
+    </div>
 
-        <p id="saldoDisplay">Saldo anda saat ini: Rp<span id="tampilanwebsaldo">0</span></p>
-
-        <script src="bank_account.js"></script>
-    </body>
+    <script src="bank_account.js"></script>
+    <script src="banking_system.js"></script>
+</body>
 </html>
