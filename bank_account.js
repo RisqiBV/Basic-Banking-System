@@ -1,6 +1,17 @@
 class BankAccount {
     constructor() {
-        this.saldo = 0;
+        this._saldo = 0;
+    }
+
+    get saldo() {
+        return this._saldo;
+    }
+
+    set saldo(value) {
+        if (isNaN(value) || value < 0) {
+            throw new Error('Input harus berupa angka dan lebih dari nol');
+        }
+        this._saldo = value;
     }
 
     showSaldo() {
@@ -9,37 +20,41 @@ class BankAccount {
     }
 
     tambahSaldo() {
-        try {
-            let inputSaldo = parseInt(prompt(`Saldo anda Rp${this.saldo}. Input penambahan saldo`));
-            if (isNaN(inputSaldo) || inputSaldo <= 0) {
-                throw new Error('Input harus berupa angka dan lebih dari nol');
+        alert('Anda akan setor saldo, tekan OK dan harap tunggu');
+
+        setTimeout(() => {
+            try {
+                let inputSaldo = parseInt(prompt(`Saldo anda Rp${this._saldo}. Input penambahan saldo`));
+                this.saldo += inputSaldo;  
+                this.showSaldo();
+                alert(`Saldo anda saat ini Rp${this._saldo}`);
+            } catch (error) {
+                alert(error.message);
             }
-            
-            this.saldo += inputSaldo;
-            this.showSaldo();
-            alert(`Saldo anda saat ini Rp${this.saldo}`);
-        } catch (error) {
-            alert(error.message);
-        }
+        }, 3000);
     }
-
+    
     kurangiSaldo() {
-        try {
-            if (this.saldo <= 0) {
-                throw new Error('Saldo belum ada');
+        alert('Anda akan menarik saldo, tekan OK dan harap tunggu');
+
+        setTimeout(() => {
+            try {
+                if (this._saldo <= 0) {
+                    throw new Error('Saldo belum ada');
+                }
+
+                let inputSaldo = parseInt(prompt(`Saldo anda Rp${this._saldo}. Input pengurangan saldo`));
+
+                if (inputSaldo > this._saldo || isNaN(inputSaldo) || inputSaldo <= 0) {
+                    throw new Error('Input pengurangan saldo tidak valid');
+                }
+
+                this._saldo -= inputSaldo; 
+                this.showSaldo();
+                alert(`Saldo anda saat ini Rp${this._saldo}`);
+            } catch (error) {
+                alert(error.message);
             }
-
-            let inputSaldo = parseInt(prompt(`Saldo anda Rp${this.saldo}. Input pengurangan saldo`));
-
-            if (inputSaldo > this.saldo || isNaN(inputSaldo) || inputSaldo <= 0) {
-                throw new Error('Input pengurangan saldo tidak valid');
-            }
-
-            this.saldo -= inputSaldo;
-            this.showSaldo();
-            alert(`Saldo anda saat ini Rp${this.saldo}`);
-        } catch (error) {
-            alert(error.message);
-        }
+        }, 3000);
     }
 }
